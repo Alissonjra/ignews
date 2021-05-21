@@ -30,7 +30,16 @@ export default function Posts({posts}:PostProps){
     <main className={styles.container}>
       <div className={styles.posts}>
         {posts.map(post=> (
-         <Link  href={ session?.activeSubscription ? `/posts/${post.slug}` : `/posts/preview/${post.slug}` }  key={post.slug}>
+         <Link
+           key={post.slug}
+           href={
+           session?.activeSubscription
+           ?
+           `/posts/${post.slug}`
+           :
+           `/posts/preview/${post.slug}`
+           }
+         >
           <a>
             <time>{post.updatedAt}</time>
             <strong>{post.title}</strong>
